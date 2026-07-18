@@ -2,12 +2,10 @@ from src.models.certificate import VerificationCertificate
 from src.models.proof import Proof
 from src.models.verification import VerificationResult
 
-
 class CertificateAgent:
     """
     Issues a verification certificate.
     """
-
     def issue(
         self,
         verification_result: VerificationResult,

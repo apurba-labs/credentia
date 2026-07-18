@@ -1,6 +1,6 @@
 from src.models.verification import VerificationResult
 from src.services.verification.rules import VerificationRules
-
+from src.models.policy import VerificationPolicy
 
 class EligibilityAgent:
 
@@ -10,7 +10,7 @@ class EligibilityAgent:
         policy: str,
     ) -> VerificationResult:
 
-        if policy != "accredited_investor":
+        if policy != VerificationPolicy.ACCREDITED_INVESTOR.value:
             return VerificationResult(
                 verified=False,
                 reason=f"Unsupported verification policy: {policy}",

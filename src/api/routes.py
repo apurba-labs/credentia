@@ -9,6 +9,7 @@ from src.api.schemas import VerificationResponseSchema
 from src.core.orchestrator import VerificationOrchestrator
 from src.models.verification import VerificationRequest
 from src.services.parser.asset_parser import AssetParser
+from src.models.policy import VerificationPolicy
 
 router = APIRouter(tags=["Verification"])
 
@@ -37,7 +38,7 @@ async def health():
 )
 async def verify(
     file: UploadFile = File(...),
-    verification_policy: str = Form(...),
+    verification_policy: VerificationPolicy = Form(...),
 ):
     temp_file = None
 
@@ -63,7 +64,7 @@ async def verify(
 
         # Build verification request
         request = VerificationRequest(
-            verification_policy=verification_policy,
+            verification_policy=verification_policy.value,
         )
 
         # Execute verification workflow
