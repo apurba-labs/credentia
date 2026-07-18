@@ -1,22 +1,13 @@
-from uuid import UUID, uuid4
-from pydantic import BaseModel, Field
-from src.models.proof import Proof
+from datetime import datetime
+from uuid import UUID
+from pydantic import BaseModel
 
 class VerificationCertificate(BaseModel):
-    """
-    Public verification certificate returned after a successful verification.
-    """
-
-    certificate_id: UUID = Field(default_factory=uuid4)
-
-    status: str = Field(
-        ...,
-        description="Certificate status (ISSUED, REJECTED, REVOKED).",
-    )
-
-    proof: Proof
-
-    summary: str = Field(
-        ...,
-        description="Human-readable verification summary.",
-    )
+    certificate_id: UUID
+    proof_id: UUID
+    policy: str
+    verified: bool
+    status: str
+    confidence: float
+    summary: str
+    issued_at: datetime

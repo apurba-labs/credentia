@@ -34,7 +34,7 @@ class VerificationOrchestrator:
         self,
         request: VerificationRequest,
         document: dict,
-    ) -> tuple[VerificationResult, VerificationCertificate]:
+    ) -> tuple[VerificationResult, VerificationCertificate, dict]:
 
         # Extract financial information from parsed document
         identity = self.identity_agent.extract(document)
@@ -59,4 +59,4 @@ class VerificationOrchestrator:
 
         result.proof_id = proof.proof_id
 
-        return result, certificate
+        return result, certificate, identity

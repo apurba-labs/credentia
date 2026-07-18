@@ -5,7 +5,12 @@ import tempfile
 
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 
-from src.api.schemas import VerificationResponseSchema
+from src.api.schemas import (
+    VerificationResponseSchema,
+    VerificationSummarySchema,
+    CertificateSchema,
+    ReportSchema,
+)
 from src.core.orchestrator import VerificationOrchestrator
 from src.models.verification import VerificationRequest
 from src.services.parser.asset_parser import AssetParser
@@ -68,21 +73,37 @@ async def verify(
         )
 
         # Execute verification workflow
-        result, certificate = orchestrator.verify(
+        result, certificate, identity = orchestrator.verify(
             request=request,
             document=document,
         )
 
         return VerificationResponseSchema(
-            verified=result.verified,
-            reason=result.reason,
-            confidence=result.confidence,
-            proof_id=result.proof_id,
-            certificate_id=certificate.certificate_id,
-            status=certificate.status,
-            summary=certificate.summary,
-        )
+            verification=VerificationSummarySchema(
+                verified=result.verified,
+                policy=request.verification_policy,
+                confidence=result.confidence,
+                reason=result.reason,
+            ),
 
+            certificate=CertificateSchema(
+                certificate_id=certificate.certificate_id,
+                proof_id=result.proof_id,
+                status=certificate.status,
+                issued_at=certificate.issued_at,
+                summary=certificate.summary,
+            ),
+
+            report=ReportSchema(
+                document_type=identity["document_type"],
+                income=identity["income"],
+                net_worth=identity["net_worth"],
+                evaluation="Eligible" if result.verified else "Not Eligible",
+            )
+        )
+        
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(
             status_code=500,
