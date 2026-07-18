@@ -14,3 +14,8 @@ dependencies = [
     "streamlit>=1.59.2",
     "uvicorn>=0.51.0",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
