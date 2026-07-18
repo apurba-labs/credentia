@@ -30,20 +30,28 @@ class VerificationOrchestrator:
         self.privacy_service = PrivacyProofService()
         self.certificate_agent = CertificateAgent()
 
-    def verify(self, request: VerificationRequest) -> tuple[VerificationResult, VerificationCertificate]:
+    def verify(
+        self,
+        request: VerificationRequest,
+        document: dict,
+    ) -> tuple[VerificationResult, VerificationCertificate]:
 
-        identity = self.identity_agent.extract(request)
+        # Extract financial information from parsed document
+        identity = self.identity_agent.extract(document)
 
+        # Evaluate eligibility
         result = self.eligibility_agent.verify(
             identity=identity,
             policy=request.verification_policy,
         )
 
+        # Generate privacy proof
         proof = self.privacy_service.generate(
             verification_result=result,
             policy=request.verification_policy,
         )
 
+        # Issue certificate
         certificate = self.certificate_agent.issue(
             verification_result=result,
             proof=proof,

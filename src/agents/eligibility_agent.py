@@ -1,9 +1,8 @@
 from src.models.verification import VerificationResult
+from src.services.verification.rules import VerificationRules
+
 
 class EligibilityAgent:
-    """
-    Applies business verification rules.
-    """
 
     def verify(
         self,
@@ -11,9 +10,16 @@ class EligibilityAgent:
         policy: str,
     ) -> VerificationResult:
 
-        verified = (
-            identity["income"] >= 200000
-            or identity["net_worth"] >= 1000000
+        if policy != "accredited_investor":
+            return VerificationResult(
+                verified=False,
+                reason=f"Unsupported verification policy: {policy}",
+                confidence=1.0,
+            )
+
+        verified = VerificationRules.is_accredited(
+            income=identity["income"],
+            net_worth=identity["net_worth"],
         )
 
         return VerificationResult(

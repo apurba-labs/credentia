@@ -1,18 +1,21 @@
-from src.models.verification import VerificationRequest
+from src.services.verification.rules import VerificationRules
+
 
 class IdentityAgent:
     """
-    Mock identity extraction.
-
-    Later this will consume parsed PDF data.
+    Extract structured financial information from parsed documents.
     """
 
-    def extract(self, request: VerificationRequest) -> dict:
+    def extract(self, document: dict) -> dict:
+
+        text = document["text"]
+
+        income = VerificationRules.extract_income(text)
+        net_worth = VerificationRules.extract_net_worth(text)
 
         return {
-            "document_type": request.document_type,
-            "income": 250000,
-            "net_worth": 1500000,
-            "currency": "USD",
-            "owner": "Demo User",
+            "income": income,
+            "net_worth": net_worth,
+            "document_type": "financial_document",
+            "confidence": 0.95,
         }

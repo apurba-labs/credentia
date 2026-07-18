@@ -1,15 +1,18 @@
-from fastapi import APIRouter
+from __future__ import annotations
 
-from src.api.schemas import (
-    VerificationRequestSchema,
-    VerificationResponseSchema,
-)
+import os
+import tempfile
 
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile
+
+from src.api.schemas import VerificationResponseSchema
 from src.core.orchestrator import VerificationOrchestrator
 from src.models.verification import VerificationRequest
+from src.services.parser.asset_parser import AssetParser
 
-router = APIRouter()
+router = APIRouter(tags=["Verification"])
 
+parser = AssetParser()
 orchestrator = VerificationOrchestrator()
 
 
@@ -28,22 +31,63 @@ async def health():
     }
 
 
-@router.post("/verify", response_model=VerificationResponseSchema)
-async def verify(payload: VerificationRequestSchema):
+@router.post(
+    "/verify",
+    response_model=VerificationResponseSchema,
+)
+async def verify(
+    file: UploadFile = File(...),
+    verification_policy: str = Form(...),
+):
+    temp_file = None
 
-    request = VerificationRequest(
-        document_type="bank_statement",
-        verification_policy=payload.verification_policy,
-    )
+    try:
+        
+        if not file.filename.lower().endswith(".pdf"):
+            raise HTTPException(
+                status_code=400,
+                detail="Only PDF files are supported.",
+            )
+            
+        suffix = os.path.splitext(file.filename)[1] or ".pdf"
 
-    result, certificate = orchestrator.verify(request)
+        with tempfile.NamedTemporaryFile(
+            delete=False,
+            suffix=suffix,
+        ) as tmp:
+            tmp.write(await file.read())
+            temp_file = tmp.name
 
-    return VerificationResponseSchema(
-        verified=result.verified,
-        reason=result.reason,
-        confidence=result.confidence,
-        proof_id=result.proof_id,
-        certificate_id=certificate.certificate_id,
-        status=certificate.status,
-        summary=certificate.summary,
-    )
+        # Parse uploaded document
+        document = parser.parse(temp_file)
+
+        # Build verification request
+        request = VerificationRequest(
+            verification_policy=verification_policy,
+        )
+
+        # Execute verification workflow
+        result, certificate = orchestrator.verify(
+            request=request,
+            document=document,
+        )
+
+        return VerificationResponseSchema(
+            verified=result.verified,
+            reason=result.reason,
+            confidence=result.confidence,
+            proof_id=result.proof_id,
+            certificate_id=certificate.certificate_id,
+            status=certificate.status,
+            summary=certificate.summary,
+        )
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Verification failed: {str(exc)}",
+        )
+
+    finally:
+        if temp_file and os.path.exists(temp_file):
+            os.remove(temp_file)
