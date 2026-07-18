@@ -214,13 +214,13 @@ AI-assisted verification using **Qwen**
     c1, c2, c3 = st.columns(3)
 
     with c1:
-        st.success("⚡ FastAPI")
+        st.success("🤖 AI Agents")
 
     with c2:
-        st.info("🌙 Midnight")
+        st.info("🌙 Midnight Network")
 
     with c3:
-        st.warning("🤖 AI-assisted Verification")
+        st.warning("🔐 Selective Disclosure")
 
     st.info(
         """

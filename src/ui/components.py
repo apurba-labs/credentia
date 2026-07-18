@@ -37,11 +37,118 @@ def verification_progress() -> None:
 
     status.success("✅ Verification completed successfully.")
 
+def how_it_works() -> None:
+    """
+    Explain the AI verification workflow and Midnight privacy model.
+    """
 
-# -----------------------------------------------------
-# Status Badge
-# -----------------------------------------------------
+    st.divider()
 
+    st.markdown("## 🌙 How Credentia Works")
+
+    st.caption(
+        "Credentia combines AI-powered document understanding with Midnight's "
+        "privacy-first philosophy to verify eligibility while minimizing "
+        "disclosure of sensitive financial information."
+    )
+
+    c1, c2, c3, c4 = st.columns(4)
+
+    with c1:
+        st.info(
+            """
+### 📄 Document
+
+Upload a
+
+• Bank Statement
+
+• Brokerage Statement
+
+• Tax Return
+"""
+        )
+
+    with c2:
+        st.info(
+            """
+### 🤖 AI Agents
+
+• Identity Extraction
+
+• Eligibility Analysis
+
+• Certificate Generation
+"""
+        )
+
+    with c3:
+        st.info(
+            """
+### 🌙 Privacy
+
+• Selective Disclosure
+
+• Minimal Data Sharing
+
+• Privacy by Design
+"""
+        )
+
+    with c4:
+        st.success(
+            """
+### 📜 Result
+
+Privacy-Preserving
+
+Verification
+
+Certificate
+"""
+        )
+
+    st.success(
+        """
+### 🔐 Powered by Midnight
+
+Instead of sharing an entire financial document, Credentia verifies eligibility
+and produces a privacy-preserving verification certificate.
+
+Organizations receive the verification outcome while sensitive financial
+information remains protected.
+"""
+    )
+
+    st.markdown("### 🤖 AI Verification Pipeline")
+
+    a1, a2, a3 = st.columns(3)
+
+    with a1:
+        st.metric(
+            "Identity Agent",
+            "Extract",
+            "Claims",
+        )
+
+    with a2:
+        st.metric(
+            "Eligibility Agent",
+            "Verify",
+            "Policy",
+        )
+
+    with a3:
+        st.metric(
+            "Certificate Agent",
+            "Issue",
+            "Proof",
+        )
+
+    st.caption(
+        "Each specialized AI agent performs a single responsibility before "
+        "issuing a privacy-preserving verification certificate."
+    )
 
 def verification_banner(result: dict) -> None:
 

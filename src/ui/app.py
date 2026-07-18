@@ -24,6 +24,7 @@ sys.path.insert(
 from src.core.config import get_settings
 from src.ui.components import (
     footer,
+    how_it_works,
     verification_progress,
 )
 from src.ui.pages.result import render_result
@@ -90,6 +91,8 @@ def main():
 
     uploaded_file, policy, verify = render_upload()
 
+    how_it_works()
+    
     if verify:
 
         if uploaded_file is None:
