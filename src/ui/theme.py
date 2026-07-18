@@ -47,11 +47,7 @@ def inject_theme() -> None:
 /* Hide Streamlit */
 /* ------------------------------------------------ */
 
-#MainMenu{
 
-    visibility:hidden;
-
-}
 
 footer{
 
@@ -59,11 +55,7 @@ footer{
 
 }
 
-header{
 
-    visibility:hidden;
-
-}
 
 /* ------------------------------------------------ */
 /* Buttons */

@@ -1,3 +1,10 @@
 [server]
 runOnSave = true
 headless = true
+
+[client]
+toolbarMode = "developer"
+
+[ui]
+# Ensure the top action bar framework stays visible
+hideTopBar = false
