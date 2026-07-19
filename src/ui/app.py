@@ -90,8 +90,6 @@ def main():
     render_header()
 
     uploaded_file, policy, verify = render_upload()
-
-    how_it_works()
     
     if verify:
 
@@ -142,6 +140,8 @@ def main():
             st.session_state["result"]
         )
 
+    how_it_works()
+    
     footer()
 
 

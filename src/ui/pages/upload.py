@@ -14,7 +14,7 @@ import streamlit as st
 # Demo Documents
 # ----------------------------------------------------
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 
 SAMPLES = ROOT / "samples"
 
@@ -99,6 +99,15 @@ def render_upload() -> tuple[BinaryIO | None, str | None, bool]:
         st.markdown("### 🏦 Bank Statement")
         st.caption("High Income Example")
 
+        with open(SAMPLES / "accredited_sample.pdf", "rb") as f:
+            st.download_button(
+                "⬇ Download Demo",
+                data=f,
+                file_name="accredited_sample.pdf",
+                mime="application/pdf",
+                use_container_width=True,
+                key="download_bank",
+            )
         if st.button(
             "Use Demo",
             key="bank_demo",
@@ -111,6 +120,16 @@ def render_upload() -> tuple[BinaryIO | None, str | None, bool]:
         st.markdown("### 📈 Brokerage Statement")
         st.caption("Investment Portfolio Example")
 
+        with open(SAMPLES / "accredited_sample.pdf", "rb") as f:
+            st.download_button(
+                "⬇ Download Demo",
+                data=f,
+                file_name="accredited_sample.pdf",
+                mime="application/pdf",
+                use_container_width=True,
+                key="download_brokerage",
+            )
+                    
         if st.button(
             "Use Demo",
             key="brokerage_demo",
@@ -122,7 +141,15 @@ def render_upload() -> tuple[BinaryIO | None, str | None, bool]:
     with c3:
         st.markdown("### 🧾 Tax Return")
         st.caption("Standard Income Filing")
-
+        with open(SAMPLES / "rejected_sample.pdf", "rb") as f:
+            st.download_button(
+                "⬇ Download Demo",
+                data=f,
+                file_name="rejected_sample.pdf",
+                mime="application/pdf",
+                use_container_width=True,
+                key="download_tax",
+            )
         if st.button(
             "Use Demo",
             key="tax_demo",
