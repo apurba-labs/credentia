@@ -48,6 +48,11 @@ def inject_theme() -> None:
 /* ------------------------------------------------ */
 
 
+#MainMenu{
+
+    visibility:hidden;
+
+}
 
 footer{
 
@@ -56,6 +61,11 @@ footer{
 }
 
 
+header{
+
+    visibility:hidden;
+
+}
 
 /* ------------------------------------------------ */
 /* Buttons */
