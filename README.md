@@ -12,13 +12,9 @@ Originally built for the Midnight Network Hackathon and extended during **OpenAI
 
 ## 🌐 Live Demo
 
-**Application**
-
-https://credentia.gotihub.com
-
-**API Documentation**
-
-https://credentia.gotihub.com/docs
+- **OpenAI Build Week Edition:** https://openai.credentia.gotihub.com
+- **Original Credentia:** https://credentia.gotihub.com
+- **API Documentation:** https://openai.credentia.gotihub.com/docs
 
 ---
 
