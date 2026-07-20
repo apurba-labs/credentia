@@ -288,6 +288,32 @@ AI-assisted verification using Qwen
 
 Open Source by Gotihub
 """
+    intelligence = result.get("intelligence")
+    if intelligence:
+        text += f"""
+
+    --------------------------------------------
+
+    AI VERIFICATION INTELLIGENCE
+
+    Executive Summary:
+    {intelligence.get("executive_summary", "")}
+
+    Reasoning:
+    {intelligence.get("reasoning", "")}
+
+    Evidence Summary:
+    {intelligence.get("evidence_summary", "")}
+
+    Confidence Explanation:
+    {intelligence.get("confidence_explanation", "")}
+
+    Recommendations:
+    {intelligence.get("recommendations", "")}
+
+    Limitations:
+    {intelligence.get("limitations", "")}
+    """
 
     st.download_button(
         "⬇ Download Verification Report",
@@ -351,3 +377,72 @@ Open Source by <b>Gotihub</b><br><br>
 def api_error(message: str) -> None:
 
     st.error(message)
+
+# -----------------------------------------------------
+# Verification Intelligence
+# -----------------------------------------------------
+
+
+def verification_intelligence(intelligence: dict | None) -> None:
+    """
+    Display AI-generated verification intelligence when available.
+    """
+
+    st.subheader("\N{ROBOT FACE} AI Verification Intelligence")
+
+    if not intelligence:
+
+        st.info(
+            "AI verification intelligence is not available for this result."
+        )
+
+        return
+
+    st.markdown("##### Executive Summary")
+    st.success(
+        intelligence.get(
+            "executive_summary",
+            "Not available.",
+        )
+    )
+    
+    with st.expander("Reasoning", expanded=True):
+
+        st.markdown(
+            intelligence.get("reasoning", "Not available.")
+        )
+
+    with st.expander("Evidence Summary"):
+
+        st.markdown(
+            intelligence.get("evidence_summary", "Not available.")
+        )
+
+    with st.expander("Confidence Explanation"):
+
+        st.markdown(
+            intelligence.get(
+                "confidence_explanation",
+                "Not available.",
+            )
+        )
+
+    st.markdown("##### Recommendations")
+
+    if intelligence.get("recommendations"):
+
+        st.success(intelligence["recommendations"])
+
+    else:
+
+        st.success("No additional recommendations were provided.")
+
+    st.markdown("##### Limitations")
+
+    if intelligence.get("limitations"):
+
+        st.warning(intelligence["limitations"])
+
+    else:
+
+        st.warning("No limitations were provided.")

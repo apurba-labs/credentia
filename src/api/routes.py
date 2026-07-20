@@ -100,7 +100,16 @@ async def verify(
                 income=identity["income"],
                 net_worth=identity["net_worth"],
                 evaluation="Eligible" if result.verified else "Not Eligible",
-            )
+            ),
+            
+            intelligence=IntelligenceSchema(
+                executive_summary=intelligence.executive_summary,
+                reasoning=intelligence.reasoning,
+                evidence_summary=intelligence.evidence_summary,
+                confidence_explanation=intelligence.confidence_explanation,
+                recommendations=intelligence.recommendations,
+                limitations=intelligence.limitations,
+            ),
         )
         
     except HTTPException:

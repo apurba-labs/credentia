@@ -10,6 +10,7 @@ from src.ui.components import (
     certificate_card,
     download_report,
     verification_banner,
+    verification_intelligence,
 )
 
 
@@ -129,6 +130,14 @@ The underlying financial document remains private,
 aligning with Midnight's privacy-first philosophy.
 """
     )
+
+    # ----------------------------------------------------
+    # AI Verification Intelligence
+    # ----------------------------------------------------
+
+    st.divider()
+
+    verification_intelligence(result.get("intelligence"))
 
     # ----------------------------------------------------
     # Downloads
