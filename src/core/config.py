@@ -1,7 +1,7 @@
 from functools import lru_cache
 
 from pydantic import Field
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -15,9 +15,15 @@ class Settings(BaseSettings):
     app_port: str = Field(alias="APP_PORT")
     log_level: str = Field(alias="LOG_LEVEL")
     streamlit_port: str = Field(alias="STREAMLIT_PORT")
-    class Config:
-        env_file = ".env"
-        extra = "ignore"
+    
+    openai_api_key: str = Field(alias="OPENAI_API_KEY")
+    openai_model: str = Field(alias="OPENAI_MODEL")
+    
+    # Modern Pydantic V2 Configuration
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        extra="ignore",
+    )
 
 
 @lru_cache
