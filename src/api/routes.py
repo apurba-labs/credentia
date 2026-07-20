@@ -10,6 +10,7 @@ from src.api.schemas import (
     VerificationSummarySchema,
     CertificateSchema,
     ReportSchema,
+    IntelligenceSchema,
 )
 from src.core.orchestrator import VerificationOrchestrator
 from src.models.verification import VerificationRequest
@@ -73,7 +74,7 @@ async def verify(
         )
 
         # Execute verification workflow
-        result, certificate, identity = orchestrator.verify(
+        result, certificate, identity, intelligence = orchestrator.verify(
             request=request,
             document=document,
         )

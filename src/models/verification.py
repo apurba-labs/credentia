@@ -4,6 +4,8 @@ from uuid import UUID, uuid4
 
 from pydantic import BaseModel, Field
 
+from .certificate import  VerificationCertificate
+from .intelligence  import VerificationIntelligence
 class VerificationRequest(BaseModel):
     """
     Internal verification request passed through the orchestration pipeline.
@@ -32,3 +34,10 @@ class VerificationResult(BaseModel):
     reason: str
     confidence: float
     proof_id: Optional[UUID] = None
+    
+    
+class VerificationResponse(BaseModel):
+    result: VerificationResult
+    certificate: VerificationCertificate
+    identity: dict
+    intelligence: VerificationIntelligence | None

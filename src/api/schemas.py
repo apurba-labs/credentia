@@ -24,8 +24,16 @@ class ReportSchema(BaseModel):
     net_worth: float
     evaluation: str
 
-
+class IntelligenceSchema(BaseModel):
+    executive_summary: str
+    reasoning: str
+    evidence_summary: str
+    confidence_explanation: str
+    recommendations: str
+    limitations: str
+    
 class VerificationResponseSchema(BaseModel):
     verification: VerificationSummarySchema
     certificate: CertificateSchema
     report: ReportSchema
+    intelligence: IntelligenceSchema | None = None
