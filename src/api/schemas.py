@@ -29,8 +29,8 @@ class IntelligenceSchema(BaseModel):
     reasoning: str
     evidence_summary: str
     confidence_explanation: str
-    recommendations: str
-    limitations: str
+    recommendations: list[str]
+    limitations: list[str]
     
 class VerificationResponseSchema(BaseModel):
     verification: VerificationSummarySchema

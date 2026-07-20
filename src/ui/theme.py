@@ -48,11 +48,6 @@ def inject_theme() -> None:
 /* ------------------------------------------------ */
 
 
-#MainMenu{
-
-    visibility:hidden;
-
-}
 
 footer{
 
@@ -61,11 +56,7 @@ footer{
 }
 
 
-header{
 
-    visibility:hidden;
-
-}
 
 /* ------------------------------------------------ */
 /* Buttons */
@@ -207,9 +198,10 @@ def render_header() -> None:
 
     st.markdown(
         """
-Built for the **Midnight Network Hackathon**
+Built for the **OpenAI Build Week 2026**
 
-AI-assisted verification using **Qwen**
+Powered by **OpenAI GPT-5.5**
+
 """
     )
 

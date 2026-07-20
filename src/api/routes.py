@@ -78,37 +78,41 @@ async def verify(
             request=request,
             document=document,
         )
-
+        verification = orchestrator.verify(
+            request=request,
+            document=document,
+        )
+        
         return VerificationResponseSchema(
             verification=VerificationSummarySchema(
-                verified=result.verified,
+                verified=verification.result.verified,
                 policy=request.verification_policy,
-                confidence=result.confidence,
-                reason=result.reason,
+                confidence=verification.result.confidence,
+                reason=verification.result.reason,
             ),
-
             certificate=CertificateSchema(
-                certificate_id=certificate.certificate_id,
-                proof_id=result.proof_id,
-                status=certificate.status,
-                issued_at=certificate.issued_at,
-                summary=certificate.summary,
+                certificate_id=verification.certificate.certificate_id,
+                proof_id=verification.result.proof_id,
+                status=verification.certificate.status,
+                issued_at=verification.certificate.issued_at,
+                summary=verification.certificate.summary,
             ),
-
             report=ReportSchema(
-                document_type=identity["document_type"],
-                income=identity["income"],
-                net_worth=identity["net_worth"],
-                evaluation="Eligible" if result.verified else "Not Eligible",
+                document_type=verification.identity["document_type"],
+                income=verification.identity["income"],
+                net_worth=verification.identity["net_worth"],
+                evaluation=(
+                    "Eligible"
+                    if verification.result.verified
+                    else "Not Eligible"
+                ),
             ),
-            
-            intelligence=IntelligenceSchema(
-                executive_summary=intelligence.executive_summary,
-                reasoning=intelligence.reasoning,
-                evidence_summary=intelligence.evidence_summary,
-                confidence_explanation=intelligence.confidence_explanation,
-                recommendations=intelligence.recommendations,
-                limitations=intelligence.limitations,
+            intelligence=(
+                IntelligenceSchema(
+                    **verification.intelligence.model_dump()
+                )
+                if verification.intelligence
+                else None
             ),
         )
         

@@ -1,14 +1,12 @@
 # 🛡 Credentia
 
-> **Privacy-Preserving Eligibility Verification**
+> 🏆 **OpenAI Build Week 2026 Submission**
 >
-> **Prove What Matters. Reveal Nothing Else.**
->
-> **AI-powered verification. Privacy by design.**
+> This branch (`feature/openai-build-week-2026`) showcases AI-powered verification intelligence built with OpenAI GPT-5.5 while preserving Credentia's privacy-first verification architecture.
 
-Built for the **Midnight Network Hackathon 2026**
+AI-powered verification using **OpenAI GPT-5.5**
 
-AI-assisted verification using **Qwen**
+Originally built for the Midnight Network Hackathon and extended during **OpenAI Build Week 2026** with structured AI verification intelligence.
 
 ---
 
@@ -34,6 +32,7 @@ The walkthrough highlights the complete privacy-preserving verification journey:
 - 📄 Financial Document Upload
 - 🤖 AI Verification Pipeline
 - 📜 Privacy-Preserving Verification Certificate
+- 🤖 AI Verification Intelligence Report
 
 ---
 
@@ -52,7 +51,43 @@ Future verification policies include:
 - 🎓 Education Verification
 - 💼 Professional Certification
 
+
 Each verification policy leverages the same selective disclosure engine while minimizing unnecessary exposure of sensitive data.
+
+---
+
+# 🤖 AI Verification Intelligence
+
+OpenAI GPT-5.5 transforms deterministic verification results into a structured executive report without changing the verification decision.
+
+The AI layer explains:
+
+- Executive Summary
+- Verification Reasoning
+- Evidence Summary
+- Confidence Analysis
+- Recommendations
+- Limitations
+
+The verification outcome remains deterministic while AI improves explainability for end users.
+
+---
+
+## 🚀 OpenAI Build Week Contribution
+
+This branch introduces:
+
+- Reusable OpenAI client
+- Provider abstraction
+- Structured Outputs
+- Verification Intelligence Agent
+- AI-generated executive verification reports
+- Explainable verification summaries
+
+> **Repository Note**
+>
+> The OpenAI Build Week implementation is available on the
+> `feature/openai-build-week-2026` branch while the `main` branch remains stable.
 
 ---
 
@@ -60,9 +95,13 @@ Each verification policy leverages the same selective disclosure engine while mi
 
 Traditional verification workflows often require users to disclose complete financial documents containing sensitive personal information.
 
-Credentia demonstrates a privacy-first approach inspired by Midnight's philosophy by verifying eligibility while minimizing disclosure of confidential data.
+Credentia is built around Midnight's privacy-first philosophy by verifying eligibility while minimizing the disclosure of confidential financial data.
 
 Instead of sharing the underlying financial document, users receive a **privacy-preserving verification certificate** that organizations can trust while sensitive financial information remains protected.
+
+During **OpenAI Build Week 2026**, Credentia was extended with an AI-powered Verification Intelligence layer using **OpenAI GPT-5.5**. This enhancement improves transparency by generating structured explanations of verification outcomes while preserving the deterministic verification process and privacy-first architecture.
+
+Privacy remains the foundation of the platform. AI enhances explainability without increasing exposure of sensitive user data.
 
 ---
 
@@ -81,29 +120,28 @@ This architecture keeps business logic independent from the underlying proof pro
 # 🏗 Architecture
 
 ```text
-          Financial Document
-                  │
-                  ▼
-         Identity Extraction Agent
-                  │
-                  ▼
-        Eligibility Verification Agent
-                  │
-                  ▼
-        Certificate Generation Agent
-                  │
-                  ▼
-         Privacy Proof Service
-                  │
-                  ▼
-        Midnight Network Adapter
-          (Simulation Layer)
-                  │
-                  ▼
-      Proof Commitment Generation
-                  │
-                  ▼
- Privacy-Preserving Verification Certificate
+Financial Document
+        │
+        ▼
+Identity Extraction Agent
+        │
+        ▼
+Eligibility Verification Agent
+        │
+        ▼
+Privacy Proof Service
+        │
+        ▼
+Certificate Generation Agent
+        │
+        ▼
+OpenAI Verification Intelligence Agent
+        │
+        ▼
+AI Executive Verification Report
+        │
+        ▼
+Privacy-Preserving Verification Certificate
 ```
 
 ---
@@ -112,30 +150,36 @@ This architecture keeps business logic independent from the underlying proof pro
 
 ```text
 Upload Financial Document
-            │
-            ▼
+        │
+        ▼
 AI Document Understanding
-            │
-            ▼
+        │
+        ▼
 Identity Extraction
-            │
-            ▼
+        │
+        ▼
 Eligibility Evaluation
-            │
-            ▼
+        │
+        ▼
 Privacy Proof Generation
-            │
-            ▼
-Proof Commitment
-            │
-            ▼
+        │
+        ▼
 Verification Certificate
+        │
+        ▼
+OpenAI Verification Intelligence
+        │
+        ▼
+Executive Verification Report
 ```
 
 ---
 
 # ✨ Features
 
+- 🤖 OpenAI GPT-5.5 Verification Intelligence
+- 📋 Executive Verification Reports
+- 🧠 Explainable AI Verification
 - 🔐 Privacy-Preserving Verification
 - 🤖 AI-Assisted Document Understanding
 - 📄 Financial Document Processing
@@ -166,7 +210,8 @@ Verification Certificate
 
 ### AI
 
-- Qwen (AI-assisted extraction)
+- OpenAI GPT-5.5
+- Structured Outputs
 - Multi-Agent Verification Pipeline
 
 ### Platform
@@ -199,26 +244,26 @@ src/
 ├── agents/
 │   ├── identity_agent.py
 │   ├── eligibility_agent.py
-│   └── certificate_agent.py
+│   ├── certificate_agent.py
+│   └── verification_intelligence_agent.py
 │
-├── services/
-│   ├── privacy_proof.py
-│   └── midnight/
-│       └── adapter.py
+├── core/
+│   ├── ai_client.py
+│   └── orchestrator.py
+│
+├── providers/
+│   └── openai.py
+│
+├── prompts/
+│   └── verification_intelligence.py
+│
+├── models/
+│   └── intelligence.py
 │
 ├── api/
-│   ├── app.py
 │   └── routes.py
 │
-├── ui/
-│   ├── app.py
-│   ├── components.py
-│   ├── theme.py
-│   └── pages/
-│       ├── upload.py
-│       └── result.py
-│
-└── core/
+└── ui/
 ```
 
 ---
@@ -226,10 +271,15 @@ src/
 # 🚀 Getting Started
 
 ```bash
+# Clone the repository
 git clone https://github.com/apurba-labs/credentia.git
 
 cd credentia
 
+# Checkout the OpenAI Build Week submission
+git checkout feature/openai-build-week-2026
+
+# Install dependencies
 uv sync
 
 # Start the FastAPI backend
@@ -249,11 +299,12 @@ MIT License
 
 # ❤️ Built For
 
-**Midnight Network Hackathon 2026**
+**OpenAI Build Week 2026**
 
-Privacy-Preserving Eligibility Verification
+Originally created during the **Midnight Network Hackathon 2026** and extended during **OpenAI Build Week 2026**.
 
-🤖 AI-assisted verification using Qwen
+
+🤖 OpenAI GPT-5.5 Verification Intelligence
 
 🌙 Privacy-first architecture inspired by Midnight
 

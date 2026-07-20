@@ -28,7 +28,8 @@ def verification_progress() -> None:
         ("🧠 Extracting eligibility claims...", 40),
         ("⚖ Evaluating verification policy...", 60),
         ("🔒 Creating privacy-preserving proof...", 80),
-        ("📜 Issuing verification certificate...", 100),
+        ("📜 Issuing verification certificate...", 90),
+        ("📜 Generating AI Verification Intelligence...", 100),
     ]
 
     for message, value in steps:
@@ -79,6 +80,8 @@ Upload a
 • Eligibility Analysis
 
 • Certificate Generation
+
+• 🤖 Intelligence
 """
         )
 
@@ -122,7 +125,7 @@ information remains protected.
 
     st.markdown("### 🤖 AI Verification Pipeline")
 
-    a1, a2, a3 = st.columns(3)
+    a1, a2, a3, a4 = st.columns(4)
 
     with a1:
         st.metric(
@@ -144,10 +147,18 @@ information remains protected.
             "Issue",
             "Proof",
         )
+        
+    with a4:
+        st.metric(
+            "OpenAI Agent",
+            "Explain",
+            "Report",
+        )
 
     st.caption(
-        "Each specialized AI agent performs a single responsibility before "
-        "issuing a privacy-preserving verification certificate."
+        "Each specialized AI agent performs a single responsibility before producing "
+        "a privacy-preserving verification certificate and an AI-generated executive "
+        "verification report."
     )
 
 def verification_banner(result: dict) -> None:
@@ -280,39 +291,47 @@ Status:
 
 --------------------------------------------
 
-Built for the Midnight Network Hackathon
+Built for the OpenAI Build Week 2026
 
 Privacy-Preserving Eligibility Verification
 
-AI-assisted verification using Qwen
+AI-assisted verification using OpenAI GPT-5.5
+
+Originally created for Midnight Network Hackathon
 
 Open Source by Gotihub
 """
     intelligence = result.get("intelligence")
     if intelligence:
+        
+        recommendations = "\n".join(
+                f"- {r}"
+                for r in intelligence.get("recommendations", [])
+            )
+        
+        limitations = "\n".join(
+            f"- {l}"
+            for l in intelligence.get("limitations", [])
+        )
+        
         text += f"""
 
     --------------------------------------------
 
     AI VERIFICATION INTELLIGENCE
 
-    Executive Summary:
-    {intelligence.get("executive_summary", "")}
+    Executive Summary: {intelligence.get("executive_summary", "")}
 
-    Reasoning:
-    {intelligence.get("reasoning", "")}
+    Reasoning:{intelligence.get("reasoning", "")}
 
-    Evidence Summary:
-    {intelligence.get("evidence_summary", "")}
+    Evidence Summary: {intelligence.get("evidence_summary", "")}
 
-    Confidence Explanation:
-    {intelligence.get("confidence_explanation", "")}
+    Confidence Explanation: {intelligence.get("confidence_explanation", "")}
 
-    Recommendations:
-    {intelligence.get("recommendations", "")}
+    
+    Recommendations:{recommendations}
 
-    Limitations:
-    {intelligence.get("limitations", "")}
+    Limitations:{limitations}
     """
 
     st.download_button(
@@ -355,9 +374,11 @@ line-height:1.8;
 
 Privacy-Preserving Eligibility Verification<br><br>
 
-Built for the <b>Midnight Network Hackathon</b><br>
+Built for the <b>OpenAI Build Week 2026</b><br>
 
-AI-assisted verification using <b>Qwen</b><br>
+AI-assisted verification using <b>OpenAI GPT-5.5</b><br>
+
+Originally created for Midnight Network Hackathon
 
 Open Source by <b>Gotihub</b><br><br>
 
@@ -419,7 +440,6 @@ def verification_intelligence(intelligence: dict | None) -> None:
         )
 
     with st.expander("Confidence Explanation"):
-
         st.markdown(
             intelligence.get(
                 "confidence_explanation",
@@ -428,21 +448,19 @@ def verification_intelligence(intelligence: dict | None) -> None:
         )
 
     st.markdown("##### Recommendations")
-
-    if intelligence.get("recommendations"):
-
-        st.success(intelligence["recommendations"])
-
+    recommendations = intelligence.get("recommendations", [])
+    if recommendations:
+        for item in recommendations:
+            st.success(item)
     else:
-
         st.success("No additional recommendations were provided.")
 
     st.markdown("##### Limitations")
 
-    if intelligence.get("limitations"):
+    limitations = intelligence.get("limitations", [])
 
-        st.warning(intelligence["limitations"])
-
+    if limitations:
+        for item in limitations:
+            st.warning(item)
     else:
-
         st.warning("No limitations were provided.")
