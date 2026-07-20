@@ -119,30 +119,7 @@ This architecture keeps business logic independent from the underlying proof pro
 
 # 🏗 Architecture
 
-```text
-Financial Document
-        │
-        ▼
-Identity Extraction Agent
-        │
-        ▼
-Eligibility Verification Agent
-        │
-        ▼
-Privacy Proof Service
-        │
-        ▼
-Certificate Generation Agent
-        │
-        ▼
-OpenAI Verification Intelligence Agent
-        │
-        ▼
-AI Executive Verification Report
-        │
-        ▼
-Privacy-Preserving Verification Certificate
-```
+![Credentia Product Walkthrough](docs/screenshots/architecture.png)
 
 ---
 
