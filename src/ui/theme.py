@@ -200,7 +200,7 @@ def render_header() -> None:
         """
 Built for the **OpenAI Build Week 2026**
 
-Powered by **OpenAI GPT-5.5**
+Powered by **OpenAI GPT-5.6**
 
 """
     )

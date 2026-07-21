@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 
 from .certificate import  VerificationCertificate
 from .intelligence  import VerificationIntelligence
+
 class VerificationRequest(BaseModel):
     """
     Internal verification request passed through the orchestration pipeline.

@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from datetime import datetime
 import json
-
+import time
 import streamlit as st
 
 
@@ -35,7 +35,7 @@ def verification_progress() -> None:
     for message, value in steps:
         status.info(message)
         progress.progress(value)
-
+        time.sleep(1.5)
     status.success("✅ Verification completed successfully.")
 
 def how_it_works() -> None:
@@ -295,7 +295,7 @@ Built for the OpenAI Build Week 2026
 
 Privacy-Preserving Eligibility Verification
 
-AI-assisted verification using OpenAI GPT-5.5
+AI Verification Intelligence powered by OpenAI GPT-5.6
 
 Originally created for Midnight Network Hackathon
 
@@ -376,7 +376,7 @@ Privacy-Preserving Eligibility Verification<br><br>
 
 Built for the <b>OpenAI Build Week 2026</b><br>
 
-AI-assisted verification using <b>OpenAI GPT-5.5</b><br>
+AI-assisted verification using <b>OpenAI GPT-5.6</b><br>
 
 Originally created for Midnight Network Hackathon
 

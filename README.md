@@ -2,9 +2,9 @@
 
 > 🏆 **OpenAI Build Week 2026 Submission**
 >
-> This branch (`feature/openai-build-week-2026`) showcases AI-powered verification intelligence built with OpenAI GPT-5.5 while preserving Credentia's privacy-first verification architecture.
+> This branch (`feature/openai-build-week-2026`) extends Credentia with OpenAI-powered Verification Intelligence. The project was developed with Codex and uses OpenAI GPT-5.6 to generate structured, explainable verification reports while preserving Credentia's privacy-first verification architecture.
 
-AI-powered verification using **OpenAI GPT-5.5**
+AI-powered verification using **OpenAI GPT-5.6**
 
 Originally built for the Midnight Network Hackathon and extended during **OpenAI Build Week 2026** with structured AI verification intelligence.
 
@@ -54,7 +54,7 @@ Each verification policy leverages the same selective disclosure engine while mi
 
 # 🤖 AI Verification Intelligence
 
-OpenAI GPT-5.5 transforms deterministic verification results into a structured executive report without changing the verification decision.
+OpenAI GPT-5.6 transforms deterministic verification results into a structured executive report without changing the verification decision.
 
 The AI layer explains:
 
@@ -69,9 +69,39 @@ The verification outcome remains deterministic while AI improves explainability 
 
 ---
 
+# 🧠 OpenAI Technologies
+
+Credentia combines two OpenAI technologies during development:
+
+### 💻 Codex
+
+Codex accelerated the implementation of the project throughout OpenAI Build Week by assisting with:
+
+- Backend architecture
+- FastAPI implementation
+- Verification Intelligence Agent
+- API refactoring
+- Streamlit UI improvements
+- Deployment and infrastructure
+- Documentation and developer experience
+
+### 🤖 OpenAI GPT-5.6
+
+GPT-5.6 powers the Verification Intelligence Agent, transforming deterministic verification results into structured executive reports containing:
+
+- Executive summaries
+- Verification reasoning
+- Evidence summaries
+- Confidence analysis
+- Recommendations
+- Limitations
+
+Together, Codex accelerated development while GPT-5.6 enhanced the explainability of verification results.
+
+---
 ## 🚀 OpenAI Build Week Contribution
 
-This branch introduces:
+This OpenAI Build Week edition introduces:
 
 - Reusable OpenAI client
 - Provider abstraction
@@ -79,6 +109,7 @@ This branch introduces:
 - Verification Intelligence Agent
 - AI-generated executive verification reports
 - Explainable verification summaries
+- Development accelerated with Codex
 
 > **Repository Note**
 >
@@ -95,7 +126,7 @@ Credentia is built around Midnight's privacy-first philosophy by verifying eligi
 
 Instead of sharing the underlying financial document, users receive a **privacy-preserving verification certificate** that organizations can trust while sensitive financial information remains protected.
 
-During **OpenAI Build Week 2026**, Credentia was extended with an AI-powered Verification Intelligence layer using **OpenAI GPT-5.5**. This enhancement improves transparency by generating structured explanations of verification outcomes while preserving the deterministic verification process and privacy-first architecture.
+During **OpenAI Build Week 2026**, Credentia was extended with an AI-powered Verification Intelligence layer using **OpenAI GPT-5.6**. This enhancement improves transparency by generating structured explanations of verification outcomes while preserving the deterministic verification process and privacy-first architecture.
 
 Privacy remains the foundation of the platform. AI enhances explainability without increasing exposure of sensitive user data.
 
@@ -150,7 +181,7 @@ Executive Verification Report
 
 # ✨ Features
 
-- 🤖 OpenAI GPT-5.5 Verification Intelligence
+- 🤖 OpenAI GPT-5.6 Verification Intelligence
 - 📋 Executive Verification Reports
 - 🧠 Explainable AI Verification
 - 🔐 Privacy-Preserving Verification
@@ -183,7 +214,7 @@ Executive Verification Report
 
 ### AI
 
-- OpenAI GPT-5.5
+- OpenAI GPT-5.6
 - Structured Outputs
 - Multi-Agent Verification Pipeline
 
@@ -274,10 +305,16 @@ MIT License
 
 **OpenAI Build Week 2026**
 
+Built with:
+
+- 💻 Codex
+- 🤖 OpenAI GPT-5.6
+- 🌙 Midnight-inspired Privacy Architecture
+
 Originally created during the **Midnight Network Hackathon 2026** and extended during **OpenAI Build Week 2026**.
 
 
-🤖 OpenAI GPT-5.5 Verification Intelligence
+🤖 OpenAI GPT-5.6 Verification Intelligence
 
 🌙 Privacy-first architecture inspired by Midnight
 
