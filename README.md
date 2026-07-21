@@ -16,6 +16,8 @@ Originally built for the Midnight Network Hackathon and extended during **OpenAI
 - **Original Credentia:** https://credentia.gotihub.com
 - **API Documentation:** https://openai.credentia.gotihub.com/docs
 
+> **Credentia demonstrates how AI can improve trust and explainability without requiring users to disclose unnecessary personal financial information.**
+
 ---
 
 ## 📸 Product Walkthrough
@@ -54,7 +56,9 @@ Each verification policy leverages the same selective disclosure engine while mi
 
 # 🤖 AI Verification Intelligence
 
-OpenAI GPT-5.6 transforms deterministic verification results into a structured executive report without changing the verification decision.
+OpenAI GPT-5.6 augments deterministic verification by generating a structured executive report while leaving the underlying verification decision unchanged.
+
+The Verification Intelligence Agent provides transparent explanations to help auditors, compliance teams, and end users understand why a verification succeeded or failed.
 
 The AI layer explains:
 
@@ -109,7 +113,7 @@ This OpenAI Build Week edition introduces:
 - Verification Intelligence Agent
 - AI-generated executive verification reports
 - Explainable verification summaries
-- Development accelerated with Codex
+- Developed with Codex throughout OpenAI Build Week
 
 > **Repository Note**
 >
@@ -215,7 +219,7 @@ Executive Verification Report
 ### AI
 
 - OpenAI GPT-5.6
-- Structured Outputs
+- Structured JSON Responses
 - Multi-Agent Verification Pipeline
 
 ### Platform
